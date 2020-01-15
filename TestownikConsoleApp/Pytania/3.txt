@@ -1,0 +1,8 @@
+001000
+Ile to jest 2+1?
+Odpowiedź A
+Odpowiedź B
+Odpowiedź C
+Odpowiedź D
+Odpowiedź E
+Odpowiedź F

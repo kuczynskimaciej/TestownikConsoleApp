@@ -1,0 +1,6 @@
+0100
+Ile to jest 2+0?
+Odpowiedź A
+Odpowiedź B
+Odpowiedź C
+Odpowiedź D

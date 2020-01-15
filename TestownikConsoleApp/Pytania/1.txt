@@ -1,0 +1,4 @@
+01
+Ile to jest 2+2?
+Odpowiedź A
+Odpowiedź B
