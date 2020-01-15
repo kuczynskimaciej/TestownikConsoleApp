@@ -8,27 +8,34 @@ namespace TestownikConsoleApp
 {
     class WriteLinesClass
     {
+
         public void WriteLines(string path)
         {
             var file = File.ReadAllLines(path);
-            var readFile = file.Skip(2).ToList(); //Lista z liniami z pliku
+            var listOfAnswers = file.Skip(2).ToList();
+            var listOfCorrectAnswers = file.First().ToList();
+            var indexes = Enumerable.Range(1, listOfCorrectAnswers.Count()).ToList();
+
             var question = file[1];
 
             char[] typeOfAnswers = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
 
+            indexes.Shuffle<int>();
+
             Console.WriteLine(question);
 
-            readFile.Shuffle<string>();
-
-            var messages = readFile.Select((x, index) =>
+            var messages = indexes.Select((x, index) =>
             {
-                return $"{typeOfAnswers[index]}) {x}";
+                return $"{typeOfAnswers[index]}) {listOfAnswers[x-1]}";
             }).ToList();
 
             messages.ForEach(x => Console.WriteLine(x));
 
-            CheckAnswerClass checkAnswer = new CheckAnswerClass();
-            checkAnswer.CheckAnswer(path);
+
+            foreach (var x in indexes)
+            {
+                Console.WriteLine(listOfCorrectAnswers[x - 1]);
+            }
 
             Menu openMenu = new Menu();
             openMenu.menu();
