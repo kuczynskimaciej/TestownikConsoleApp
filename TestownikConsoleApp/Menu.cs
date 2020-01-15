@@ -41,7 +41,7 @@ namespace TestownikConsoleApp
             }
             catch
             {
-                //Console.Clear();
+                Console.Clear();
                 Console.WriteLine("~~~Wprowadź cyfrę!~~~\n");
                 menu();
             }

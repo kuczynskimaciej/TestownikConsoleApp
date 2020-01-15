@@ -24,19 +24,27 @@ namespace TestownikConsoleApp
 
             Console.WriteLine(question);
 
-            var messages = indexes.Select((x, index) =>
+            var printAnswers = indexes.Select((x, index) =>
             {
-                return $"{typeOfAnswers[index]}) {listOfAnswers[x-1]}";
+                return $"{typeOfAnswers[index]}) {listOfAnswers[x - 1]}";
             }).ToList();
 
-            messages.ForEach(x => Console.WriteLine(x));
+            printAnswers.ForEach(x => Console.WriteLine(x));
 
-
-            foreach (var x in indexes)
+            var checkCorrectAnswer = indexes.Select((x, index) =>
             {
-                Console.WriteLine(listOfCorrectAnswers[x - 1]);
-            }
+                return listOfCorrectAnswers[x-1];
+            }).ToList();
 
+            
+            //var checkAnswer = Console.ReadLine();
+            var indexOfCorrectAnswer = checkCorrectAnswer.IndexOf('1');
+            var indexOfTypeOfAnswer = typeOfAnswers[indexOfCorrectAnswer];
+
+            Console.WriteLine(indexOfCorrectAnswer);
+            Console.WriteLine(indexOfTypeOfAnswer);
+
+            
             Menu openMenu = new Menu();
             openMenu.menu();
         }
