@@ -22,7 +22,7 @@ namespace TestownikConsoleApp
             //}
             //else
             //{
-            //    Console.WriteLine("źle, jeszcze raz");;;;;;
+            //    Console.WriteLine("źle, jeszcze raz");
             //    CheckAnswer(path);
             //}
         }
