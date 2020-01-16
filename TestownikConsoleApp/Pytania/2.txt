@@ -1,6 +1,6 @@
-0100
+0010
 Ile to jest 2+0?
-Odpowiedź A
-Odpowiedź B
-Odpowiedź C
-Odpowiedź D
+1
+0
+2
+4

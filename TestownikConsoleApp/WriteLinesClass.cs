@@ -29,7 +29,7 @@ namespace TestownikConsoleApp
             listOfAnswers.Shuffle();
 
             char[] typeOfAnswers = Enumerable.Range('A', 26).Select(x => (char)x).ToArray();
-           
+
             Console.WriteLine(question);
 
             var printAnswers = listOfAnswers.Select((x, index) =>
@@ -42,7 +42,6 @@ namespace TestownikConsoleApp
                 };
             }).ToList();
 
-
             printAnswers.ForEach(x => Console.WriteLine($"{x.Type}) {x.Answer}"));
 
             Console.Write("Wprowadź odpowiedź: ");
@@ -51,7 +50,8 @@ namespace TestownikConsoleApp
             var split = answer.Split(',');
 
             var selectedAnswers = printAnswers.Where(x => split.Any(y => string.Equals(y, x.Type, StringComparison.InvariantCultureIgnoreCase)));
-            if(selectedAnswers.All(x => x.IsCorrect))
+
+            if (selectedAnswers.All(x => x.IsCorrect))
             {
                 Console.WriteLine("GOOD");
             }
@@ -62,6 +62,7 @@ namespace TestownikConsoleApp
 
             Menu openMenu = new Menu();
             openMenu.menu();
+
         }
     }
 }

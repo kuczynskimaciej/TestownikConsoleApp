@@ -10,8 +10,11 @@ namespace TestownikConsoleApp
         {
 
             Console.WriteLine("1 - Losuj");
-            Console.WriteLine("2 - Wyjdź");
+            Console.WriteLine("2 - Dodaj Pytanie");
+            Console.WriteLine("3 - Wyjdź");
             int caseSwitch = Convert.ToInt32(Console.ReadLine());
+            GetPathClass getPath = new GetPathClass();
+            string path = getPath.getrandomfile(@"D:\C#\Programy\TestownikConsoleApp\TestownikConsoleApp\Pytania");
 
             try
             {
@@ -19,15 +22,18 @@ namespace TestownikConsoleApp
                 {
                     case 1:
                         Console.Clear();
-                        GetPathClass getPath = new GetPathClass();
-                        string path = getPath.getrandomfile(@"D:\C#\Programy\TestownikConsoleApp\TestownikConsoleApp\Pytania");
                         WriteLinesClass readFile = new WriteLinesClass();
                         readFile.WriteLines(path);
 
-                        Console.ReadLine();
+                        break;
+
+                    case 2:
+                        Console.Clear();
+                        AddNewQuestionClass writeFile = new AddNewQuestionClass();
+                        writeFile.AddNewQuestion();
 
                         break;
-                    case 2:
+                    case 3:
                         Environment.Exit(0);
 
                         break;
