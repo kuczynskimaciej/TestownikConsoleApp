@@ -12,39 +12,54 @@ namespace TestownikConsoleApp
         public void WriteLines(string path)
         {
             var file = File.ReadAllLines(path);
-            var listOfAnswers = file.Skip(2).ToList();
-            var listOfCorrectAnswers = file.First().ToList();
-            var indexes = Enumerable.Range(1, listOfCorrectAnswers.Count()).ToList();
+            char[] lineOfAnswers = file[0].ToArray();
+
+            if (lineOfAnswers.Count() != file.Skip(2).Count())
+            {
+                throw new Exception("Liczba odpowiedzi nie jest zgodna z liczba pytan w pliku");
+            }
+
+            var listOfAnswers = file.Skip(2).Select((x, index) =>
+            {
+                return new KeyValuePair<string, bool>(x, lineOfAnswers[index] == '1' ? true : false);
+            }).ToList();
 
             var question = file[1];
 
-            char[] typeOfAnswers = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
+            listOfAnswers.Shuffle();
 
-            indexes.Shuffle<int>();
-
+            char[] typeOfAnswers = Enumerable.Range('A', 26).Select(x => (char)x).ToArray();
+           
             Console.WriteLine(question);
 
-            var printAnswers = indexes.Select((x, index) =>
+            var printAnswers = listOfAnswers.Select((x, index) =>
             {
-                return $"{typeOfAnswers[index]}) {listOfAnswers[x - 1]}";
+                return new AnswerDto()
+                {
+                    Type = typeOfAnswers[index].ToString(),
+                    Answer = x.Key,
+                    IsCorrect = x.Value
+                };
             }).ToList();
 
-            printAnswers.ForEach(x => Console.WriteLine(x));
 
-            var checkCorrectAnswer = indexes.Select((x, index) =>
+            printAnswers.ForEach(x => Console.WriteLine($"{x.Type}) {x.Answer}"));
+
+            Console.Write("Wprowadź odpowiedź: ");
+            var answer = Console.ReadLine();
+
+            var split = answer.Split(',');
+
+            var selectedAnswers = printAnswers.Where(x => split.Any(y => string.Equals(y, x.Type, StringComparison.InvariantCultureIgnoreCase)));
+            if(selectedAnswers.All(x => x.IsCorrect))
             {
-                return listOfCorrectAnswers[x-1];
-            }).ToList();
+                Console.WriteLine("GOOD");
+            }
+            else
+            {
+                Console.WriteLine("BAAD");
+            }
 
-            
-            //var checkAnswer = Console.ReadLine();
-            var indexOfCorrectAnswer = checkCorrectAnswer.IndexOf('1');
-            var indexOfTypeOfAnswer = typeOfAnswers[indexOfCorrectAnswer];
-
-            Console.WriteLine(indexOfCorrectAnswer);
-            Console.WriteLine(indexOfTypeOfAnswer);
-
-            
             Menu openMenu = new Menu();
             openMenu.menu();
         }
