@@ -20,7 +20,7 @@ namespace TestownikConsoleApp
             }
         }
 
-        public string getrandomfile(string path)
+        public string getrandomfile(string path) // publiczne metody  z dużej
         {
             string file = null;
             if (!string.IsNullOrEmpty(path))
@@ -39,7 +39,7 @@ namespace TestownikConsoleApp
                         file = rgFiles.ElementAt(x).FullName;
                     }
                 }
-                catch { }
+                catch { } // pusty catch? to jak się coś wywali to rozumiem, że olewamy?
             }
 
             return file;

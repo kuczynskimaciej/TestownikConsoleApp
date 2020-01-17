@@ -14,7 +14,7 @@ namespace TestownikConsoleApp
             Console.WriteLine("3 - Wyjdź");
             int caseSwitch = Convert.ToInt32(Console.ReadLine());
             GetPathClass getPath = new GetPathClass();
-            string path = getPath.getrandomfile(@"D:\C#\Programy\TestownikConsoleApp\TestownikConsoleApp\Pytania");
+            string path = getPath.getrandomfile("Pytania");
 
             try
             {
@@ -30,7 +30,7 @@ namespace TestownikConsoleApp
                     case 2:
                         Console.Clear();
                         AddNewQuestionClass writeFile = new AddNewQuestionClass();
-                        writeFile.AddNewQuestion();
+                        writeFile.AddNewQuestion(); // co to robi?
 
                         break;
                     case 3:
