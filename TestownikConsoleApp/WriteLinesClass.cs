@@ -28,7 +28,9 @@ namespace TestownikConsoleApp
 
             listOfAnswers.Shuffle();
 
-            char[] typeOfAnswers = Enumerable.Range('A', 26).Select(x => (char)x).ToArray();
+            int countOfAnswers = file.Skip(2).Count();
+
+            char[] typeOfAnswers = Enumerable.Range('A', countOfAnswers).Select(x => (char)x).ToArray();
 
             Console.WriteLine(question);
 
@@ -45,20 +47,30 @@ namespace TestownikConsoleApp
             printAnswers.ForEach(x => Console.WriteLine($"{x.Type}) {x.Answer}"));
 
             Console.Write("Wprowadź odpowiedź: ");
-            var answer = Console.ReadLine();
+            string answer = Console.ReadLine();
 
             var split = answer.Split(',');
 
             var selectedAnswers = printAnswers.Where(x => split.Any(y => string.Equals(y, x.Type, StringComparison.InvariantCultureIgnoreCase)));
 
-            if (selectedAnswers.All(x => x.IsCorrect))
+            if (typeOfAnswers.Contains(answer))         //Problem przy porownaniu chara ze stringiem
             {
-                Console.WriteLine("GOOD");
+
+                if (selectedAnswers.All(x => x.IsCorrect))
+                {
+                    Console.WriteLine("GOOD");
+                }
+                else
+                {
+                    Console.WriteLine("BAAD");
+                }
             }
             else
             {
-                Console.WriteLine("BAAD");
+                Console.WriteLine("Wprowadź odpowiedź!");
             }
+                  
+          
 
             Menu openMenu = new Menu();
             openMenu.menu();
