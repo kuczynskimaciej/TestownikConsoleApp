@@ -56,7 +56,7 @@ namespace TestownikConsoleApp
 
             foreach (var y in selectedAnswers)
             {
-                if (result.Contains(y.Type))
+                if (result.Contains(y.Type)) //Robi tyle razy ile jest odpowiedzi przez foreacha, jak to ograniczyc do jednego razu
                 {
                     if (selectedAnswers.All(x => x.IsCorrect))
                     {
@@ -67,7 +67,7 @@ namespace TestownikConsoleApp
                         Console.WriteLine("BAAD");
                     }
                 }
-                else //Nie wyrzuca do tego elsa
+                else //Nie wyrzuca do tego elsa, jak wpiszę zły znak tylko robi poprzedniego "BAAD"
                 {
                     Console.WriteLine("Zły znak, wprowadź odpowiedź!");
                 }
