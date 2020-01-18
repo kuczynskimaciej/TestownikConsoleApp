@@ -7,11 +7,12 @@ namespace TestownikConsoleApp
 {
     class AddNewQuestionClass
     {
-        public void AddNewQuestion() // to nic nie robi
+        public void AddNewQuestion()
         {
-            string path = @"D:\C#\Programy\TestownikConsoleApp\TestownikConsoleApp\Pytania";
+            string path = "Pytania";
             int fileCount = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories).Length;
 
+            
         }
     }
 }

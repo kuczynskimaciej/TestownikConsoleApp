@@ -20,28 +20,24 @@ namespace TestownikConsoleApp
             }
         }
 
-        public string getrandomfile(string path) // publiczne metody  z dużej
+        public string GetRandomFile(string path)
         {
             string file = null;
             if (!string.IsNullOrEmpty(path))
             {
                 var extensions = new string[] { ".txt" };
-                try
-                {
-                    var di = new DirectoryInfo(path);
-                    var rgFiles = di.GetFiles("*.*")
-                                    .Where(f => extensions.Contains(f.Extension
-                                    .ToLower()));
-                    int fileCount = rgFiles.Count();
-                    if (fileCount > 0)
-                    {
-                        int x = this.Generator.Next(0, fileCount);
-                        file = rgFiles.ElementAt(x).FullName;
-                    }
-                }
-                catch { } // pusty catch? to jak się coś wywali to rozumiem, że olewamy?
-            }
 
+                var di = new DirectoryInfo(path);
+                var rgFiles = di.GetFiles("*.*")
+                                .Where(f => extensions.Contains(f.Extension
+                                .ToLower()));
+                int fileCount = rgFiles.Count();
+                if (fileCount > 0)
+                {
+                    int x = this.Generator.Next(0, fileCount);
+                    file = rgFiles.ElementAt(x).FullName;
+                }
+            }
             return file;
         }
     }

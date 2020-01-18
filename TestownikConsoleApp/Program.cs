@@ -6,8 +6,8 @@ namespace TestownikConsoleApp
     {
         static void Main(string[] args)
         {
-            Menu openMenu = new Menu();
-            openMenu.menu();
+            MenuClass openMenu = new MenuClass();
+            openMenu.Menu();
         }
     }
 }

@@ -4,9 +4,9 @@ using System.Text;
 
 namespace TestownikConsoleApp
 {
-    class Menu
+    class MenuClass
     {
-        public void menu()
+        public void Menu()
         {
 
             Console.WriteLine("1 - Losuj");
@@ -14,7 +14,7 @@ namespace TestownikConsoleApp
             Console.WriteLine("3 - Wyjdź");
             int caseSwitch = Convert.ToInt32(Console.ReadLine());
             GetPathClass getPath = new GetPathClass();
-            string path = getPath.getrandomfile("Pytania");
+            string path = getPath.GetRandomFile("Pytania");
 
             try
             {
@@ -30,7 +30,7 @@ namespace TestownikConsoleApp
                     case 2:
                         Console.Clear();
                         AddNewQuestionClass writeFile = new AddNewQuestionClass();
-                        writeFile.AddNewQuestion(); // co to robi?
+                        writeFile.AddNewQuestion();
 
                         break;
                     case 3:
@@ -41,7 +41,7 @@ namespace TestownikConsoleApp
                 if (caseSwitch == 0 || caseSwitch > 2)
                 {
                     Console.Clear();
-                    menu();
+                    Menu();
                 }
                 else Environment.Exit(0);
             }
@@ -49,7 +49,7 @@ namespace TestownikConsoleApp
             {
                 Console.Clear();
                 Console.WriteLine("~~~Wprowadź cyfrę!~~~\n");
-                menu();
+                Menu();
             }
         }
     }

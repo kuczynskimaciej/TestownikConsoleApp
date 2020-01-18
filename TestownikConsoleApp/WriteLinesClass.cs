@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 
 namespace TestownikConsoleApp
 {
@@ -47,34 +46,35 @@ namespace TestownikConsoleApp
             printAnswers.ForEach(x => Console.WriteLine($"{x.Type}) {x.Answer}"));
 
             Console.Write("Wprowadź odpowiedź: ");
-            string answer = Console.ReadLine();
+            string answer = (string)Console.ReadLine();
 
             var split = answer.Split(',');
 
             var selectedAnswers = printAnswers.Where(x => split.Any(y => string.Equals(y, x.Type, StringComparison.InvariantCultureIgnoreCase)));
 
-            if (typeOfAnswers.Contains(answer))         //Problem przy porownaniu chara ze stringiem
-            {
+            string result = new string(typeOfAnswers);
 
-                if (selectedAnswers.All(x => x.IsCorrect))
+            foreach (var y in selectedAnswers)
+            {
+                if (result.Contains(y.Type))
                 {
-                    Console.WriteLine("GOOD");
+                    if (selectedAnswers.All(x => x.IsCorrect))
+                    {
+                        Console.WriteLine("GOOD");
+                    }
+                    else
+                    {
+                        Console.WriteLine("BAAD");
+                    }
                 }
-                else
+                else //Nie wyrzuca do tego elsa
                 {
-                    Console.WriteLine("BAAD");
+                    Console.WriteLine("Zły znak, wprowadź odpowiedź!");
                 }
             }
-            else
-            {
-                Console.WriteLine("Wprowadź odpowiedź!");
-            }
-                  
-          
 
-            Menu openMenu = new Menu();
-            openMenu.menu();
-
+            MenuClass openMenu = new MenuClass();
+            openMenu.Menu();
         }
     }
 }
