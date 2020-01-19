@@ -7,7 +7,6 @@ namespace TestownikConsoleApp
 {
     class WriteLinesClass
     {
-
         public void WriteLines(string path)
         {
             var file = File.ReadAllLines(path);
@@ -15,7 +14,9 @@ namespace TestownikConsoleApp
 
             if (lineOfAnswers.Count() != file.Skip(2).Count())
             {
-                throw new Exception("Liczba odpowiedzi nie jest zgodna z liczba pytan w pliku");
+                Console.WriteLine($"Błąd w pliku: {path}");
+                Console.WriteLine("Liczba odpowiedzi nie jest zgodna z liczba znacznikó odpowiedzi w pliku");
+                Console.ReadLine();
             }
 
             var listOfAnswers = file.Skip(2).Select((x, index) =>
@@ -46,7 +47,7 @@ namespace TestownikConsoleApp
             printAnswers.ForEach(x => Console.WriteLine($"{x.Type}) {x.Answer}"));
 
             Console.Write("Wprowadź odpowiedź: ");
-            string answer = (string)Console.ReadLine();
+            string answer = Console.ReadLine();
 
             var split = answer.Split(',');
 
@@ -54,24 +55,23 @@ namespace TestownikConsoleApp
 
             string result = new string(typeOfAnswers);
 
-            foreach (var y in selectedAnswers)
-            {
-                if (result.Contains(y.Type)) //Robi tyle razy ile jest odpowiedzi przez foreacha, jak to ograniczyc do jednego razu
-                {
-                    if (selectedAnswers.All(x => x.IsCorrect))
-                    {
-                        Console.WriteLine("GOOD");
-                    }
-                    else
-                    {
-                        Console.WriteLine("BAAD");
-                    }
-                }
-                else //Nie wyrzuca do tego elsa, jak wpiszę zły znak tylko robi poprzedniego "BAAD"
-                {
-                    Console.WriteLine("Zły znak, wprowadź odpowiedź!");
-                }
-            }
+
+            //if () 
+            //{
+            //    if (selectedAnswers.All(x => x.IsCorrect))
+            //    {
+            //        Console.WriteLine("GOOD");
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("BAAD");
+            //    }
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Zły znak, wprowadź odpowiedź!");
+            //}
+
 
             MenuClass openMenu = new MenuClass();
             openMenu.Menu();

@@ -12,45 +12,60 @@ namespace TestownikConsoleApp
             Console.WriteLine("1 - Losuj");
             Console.WriteLine("2 - Dodaj Pytanie");
             Console.WriteLine("3 - Wyjdź");
-            int caseSwitch = Convert.ToInt32(Console.ReadLine());
             GetPathClass getPath = new GetPathClass();
             string path = getPath.GetRandomFile("Pytania");
 
-            try
+            var caseSwitch = Console.ReadLine();
+            int number;
+
+            bool success = Int32.TryParse(caseSwitch, out number);
+
+            if (success)
             {
-                switch (caseSwitch)
+                try
                 {
-                    case 1:
+                    switch (number)
+                    {
+                        case 1:
+                            Console.Clear();
+                            WriteLinesClass readFile = new WriteLinesClass();
+                            readFile.WriteLines(path);
+
+                            break;
+
+                        case 2:
+                            Console.Clear();
+                            AddNewQuestionClass writeFile = new AddNewQuestionClass();
+                            writeFile.AddNewQuestion();
+
+                            break;
+                        case 3:
+                            Environment.Exit(0);
+
+                            break;
+                    }
+                    if (number == 0 || number > 2)
+                    {
                         Console.Clear();
-                        WriteLinesClass readFile = new WriteLinesClass();
-                        readFile.WriteLines(path);
-
-                        break;
-
-                    case 2:
-                        Console.Clear();
-                        AddNewQuestionClass writeFile = new AddNewQuestionClass();
-                        writeFile.AddNewQuestion();
-
-                        break;
-                    case 3:
-                        Environment.Exit(0);
-
-                        break;
+                        Menu();
+                    }
+                    else Environment.Exit(0);
                 }
-                if (caseSwitch == 0 || caseSwitch > 2)
+                catch
                 {
                     Console.Clear();
+                    //Console.WriteLine("~~~Wprowadź cyfrę!~~~\n");
                     Menu();
                 }
-                else Environment.Exit(0);
             }
-            catch
+            else
             {
                 Console.Clear();
-                Console.WriteLine("~~~Wprowadź cyfrę!~~~\n");
+                Console.WriteLine("Wprowadź liczbę!\n");
                 Menu();
             }
+
         }
     }
 }
+
