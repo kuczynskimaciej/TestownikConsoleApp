@@ -14,8 +14,8 @@ namespace TestownikConsoleApp
 
             if (lineOfAnswers.Count() != file.Skip(2).Count())
             {
-                Console.WriteLine($"Błąd w pliku: {path}");
-                Console.WriteLine("Liczba odpowiedzi nie jest zgodna z liczba znacznikó odpowiedzi w pliku");
+                Console.WriteLine($"Błąd w pliku: \n\n{path}\n");
+                Console.WriteLine("Liczba odpowiedzi nie jest zgodna z liczba znaczników odpowiedzi w pliku.");
                 Console.ReadLine();
             }
 
@@ -49,28 +49,25 @@ namespace TestownikConsoleApp
             Console.Write("Wprowadź odpowiedź: ");
             string answer = Console.ReadLine();
 
-            var split = answer.Split(',');
+            var split = answer.Split(',').ToList();
 
             var selectedAnswers = printAnswers.Where(x => split.Any(y => string.Equals(y, x.Type, StringComparison.InvariantCultureIgnoreCase)));
 
-            string result = new string(typeOfAnswers);
-
-
-            //if () 
-            //{
-            //    if (selectedAnswers.All(x => x.IsCorrect))
-            //    {
-            //        Console.WriteLine("GOOD");
-            //    }
-            //    else
-            //    {
-            //        Console.WriteLine("BAAD");
-            //    }
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Zły znak, wprowadź odpowiedź!");
-            //}
+            if (selectedAnswers.Any(x => printAnswers.Any(y => y.Type == x.Type))) 
+                {
+                    if (selectedAnswers.All(x => x.IsCorrect))
+                    {
+                        Console.WriteLine("GOOD");
+                    }
+                    else
+                    {
+                        Console.WriteLine("BAAD");
+                    }
+                }
+                else 
+                {
+                    Console.WriteLine("Zły znak, wprowadź odpowiedź!");
+                }
 
 
             MenuClass openMenu = new MenuClass();
