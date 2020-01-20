@@ -9,6 +9,8 @@ namespace TestownikConsoleApp
     {
         public void WriteLines(string path)
         {
+            MenuClass openMenu = new MenuClass();
+
             var file = File.ReadAllLines(path);
             char[] lineOfAnswers = file[0].ToArray();
 
@@ -17,6 +19,8 @@ namespace TestownikConsoleApp
                 Console.WriteLine($"Błąd w pliku: \n\n{path}\n");
                 Console.WriteLine("Liczba odpowiedzi nie jest zgodna z liczba znaczników odpowiedzi w pliku.");
                 Console.ReadLine();
+                Console.Clear();
+                openMenu.Menu();
             }
 
             var listOfAnswers = file.Skip(2).Select((x, index) =>
@@ -49,7 +53,7 @@ namespace TestownikConsoleApp
             Console.Write("Wprowadź odpowiedź: ");
             string answer = Console.ReadLine();
 
-            var split = answer.Split(',').ToList();
+            var split = answer.Split(',');
 
             var selectedAnswers = printAnswers.Where(x => split.Any(y => string.Equals(y, x.Type, StringComparison.InvariantCultureIgnoreCase)));
 
@@ -70,7 +74,7 @@ namespace TestownikConsoleApp
                 }
 
 
-            MenuClass openMenu = new MenuClass();
+            Console.WriteLine();
             openMenu.Menu();
         }
     }

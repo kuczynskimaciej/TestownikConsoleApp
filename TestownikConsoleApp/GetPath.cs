@@ -34,8 +34,8 @@ namespace TestownikConsoleApp
                 int fileCount = rgFiles.Count();
                 if (fileCount > 0)
                 {
-                    int x = this.Generator.Next(0, fileCount);
-                    file = rgFiles.ElementAt(x).FullName;
+                    int rndNubmerOfFile = this.Generator.Next(0, fileCount);
+                    file = rgFiles.ElementAt(rndNubmerOfFile).FullName;
                 }
             }
             return file;
