@@ -26,7 +26,6 @@ namespace TestownikConsoleApp
             if (!string.IsNullOrEmpty(path))
             {
                 var extensions = new string[] { ".txt" };
-
                 var di = new DirectoryInfo(path);
                 var rgFiles = di.GetFiles("*.*")
                                 .Where(f => extensions.Contains(f.Extension

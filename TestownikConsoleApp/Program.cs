@@ -4,10 +4,10 @@ namespace TestownikConsoleApp
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            MenuClass openMenu = new MenuClass();
-            openMenu.Menu();
+            Menu openMenu = new Menu();
+            openMenu.PrintMenu();
         }
     }
 }

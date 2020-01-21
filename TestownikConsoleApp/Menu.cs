@@ -4,9 +4,9 @@ using System.Text;
 
 namespace TestownikConsoleApp
 {
-    class MenuClass
+    class Menu
     {
-        public void Menu()
+        public void PrintMenu()
         {
 
             Console.WriteLine("1 - Losuj");
@@ -14,19 +14,16 @@ namespace TestownikConsoleApp
             Console.WriteLine("3 - Wyjdź");
             GetPathClass getPath = new GetPathClass();
             string path = getPath.GetRandomFile("Pytania");
-
             var selectedNumber = Console.ReadLine();
             int number;
-
             bool success = Int32.TryParse(selectedNumber, out number);
-
             if (success)
             {
                 switch (number)
                 {
                     case 1:
                         Console.Clear();
-                        WriteLinesClass readFile = new WriteLinesClass();
+                        WriteFile readFile = new WriteFile();
                         readFile.WriteLines(path);
 
                         break;
@@ -43,7 +40,7 @@ namespace TestownikConsoleApp
                         break;
                     default:
                         Console.Clear();
-                        Menu();
+                        PrintMenu();
 
                         break;
                 }
@@ -51,7 +48,7 @@ namespace TestownikConsoleApp
             else
             {
                 Console.Clear();
-                Menu();
+                PrintMenu();
             }
         }
     }
