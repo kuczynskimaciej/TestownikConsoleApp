@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace TestownikConsoleApp
 {
-    class GetPathClass
+    class FileRandomizer
     {
         private Random generator;
         private Random Generator

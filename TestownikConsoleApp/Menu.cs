@@ -12,7 +12,7 @@ namespace TestownikConsoleApp
             Console.WriteLine("1 - Losuj");
             Console.WriteLine("2 - Dodaj Pytanie");
             Console.WriteLine("3 - Wyjdź");
-            GetPathClass getPath = new GetPathClass();
+            FileRandomizer getPath = new FileRandomizer();
             string path = getPath.GetRandomFile("Pytania");
             var selectedNumber = Console.ReadLine();
             int number;
@@ -23,15 +23,15 @@ namespace TestownikConsoleApp
                 {
                     case 1:
                         Console.Clear();
-                        WriteFile readFile = new WriteFile();
-                        readFile.WriteLines(path);
+                        ReadFile readFile = new ReadFile();
+                        readFile.ReadLines(path);
 
                         break;
 
                     case 2:
                         Console.Clear();
-                        AddNewQuestionClass writeFile = new AddNewQuestionClass();
-                        writeFile.AddNewQuestion();
+                        WriteFile writeFile = new WriteFile();
+                        writeFile.AddNewFile();
 
                         break;
                     case 3:
