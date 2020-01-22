@@ -6,8 +6,12 @@ namespace TestownikConsoleApp
     {
         static void Main()
         {
-            Menu openMenu = new Menu();
-            openMenu.PrintMenu();
+            //Menu openMenu = new Menu();
+            //openMenu.PrintMenu();
+            QuestionWriter writeQuestion = new QuestionWriter();
+            writeQuestion.WriteQuestions();
+
+            Console.ReadLine();
         }
     }
 }

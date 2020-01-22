@@ -14,8 +14,6 @@ namespace TestownikConsoleApp
             Console.WriteLine("3 - Wyjdź");
             FileRandomizer getPath = new FileRandomizer();
             string path = getPath.GetRandomFile("Pytania");
-            QuestionParser questionParser = new QuestionParser();
-            var questions = questionParser.ReadQuestions("Pytania");
             var selectedNumber = Console.ReadLine();
             int number;
             bool success = Int32.TryParse(selectedNumber, out number);
