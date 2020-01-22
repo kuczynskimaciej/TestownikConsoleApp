@@ -23,7 +23,7 @@ namespace TestownikConsoleApp
                 {
                     case 1:
                         Console.Clear();
-                        ReadFile readFile = new ReadFile();
+                        FileReader readFile = new FileReader();
                         readFile.ReadLines(path);
 
                         break;

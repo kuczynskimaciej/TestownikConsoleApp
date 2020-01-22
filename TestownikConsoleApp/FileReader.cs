@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace TestownikConsoleApp
 {
-    class ReadFile
+    class FileReader
     {
         public void ReadLines(string path)
         {
