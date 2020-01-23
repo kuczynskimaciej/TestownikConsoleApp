@@ -12,8 +12,24 @@ namespace TestownikConsoleApp
             QuestionParser questionParser = new QuestionParser();
             var questions = questionParser.ReadQuestions("Pytania");
 
-            questions.ForEach(x => Console.WriteLine(x.Question));
-            questions.ForEach(x => x.Answers.ForEach(y => Console.WriteLine(y.Answer)));
+            //foreach (QuestionDto question in questions)
+            //{
+            //    Console.WriteLine(question.Question);
+            //    foreach (AnswerDto answer in question.Answers)
+            //    {
+            //        Console.WriteLine(answer.Answer);
+            //    }
+            //}
+
+            questions.ForEach(question =>
+            {
+                Console.WriteLine(question.Question);
+                int countOfAnswers = question.Answers.Count();
+                question.Answers.ForEach(answer =>
+                {
+                    Console.WriteLine($"{answer.Answer}");
+                });
+            });
         }
     }
 }
