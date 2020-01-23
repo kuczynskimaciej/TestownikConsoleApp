@@ -21,11 +21,12 @@ namespace TestownikConsoleApp
                     continue;
                 }
 
-                QuestionDto question = new QuestionDto();
-                question.Question = lines[1];
+                QuestionDto question = new QuestionDto
+                {
+                    Question = lines[1]
+                };
                 var answersPointers = lines[0].ToCharArray();
                 var answerLines = lines.Skip(2).ToArray();
-
                 if (answersPointers.Length != answerLines.Length)
                 {
                     Console.WriteLine("Niezgodna ilośc opdowiedzi");
@@ -37,9 +38,11 @@ namespace TestownikConsoleApp
                 {
                     string answerLine = answerLines[i];
                     string result = answersPointers[i].ToString();
-                    var answer = new AnswerDto();
-                    answer.Answer = answerLine;
-                    answer.IsCorrect = result == "1";
+                    var answer = new AnswerDto
+                    {
+                        Answer = answerLine,
+                        IsCorrect = result == "1"
+                    };
                     question.Answers.Add(answer);
                 }
 
