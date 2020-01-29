@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 
 namespace TestownikConsoleApp
 {
@@ -17,7 +16,7 @@ namespace TestownikConsoleApp
                 string[] lines = File.ReadAllLines(questionFile);
                 if (lines.Length < 4)
                 {
-                    Console.WriteLine("Niepoprawna ilość odpowiedzi");
+                    Console.WriteLine($"Niepoprawna ilość odpowiedzi w pliku: {questionFile}");
                     continue;
                 }
 
@@ -25,11 +24,12 @@ namespace TestownikConsoleApp
                 {
                     Question = lines[1]
                 };
+
                 var answersPointers = lines[0].ToCharArray();
                 var answerLines = lines.Skip(2).ToArray();
                 if (answersPointers.Length != answerLines.Length)
                 {
-                    Console.WriteLine("Niezgodna ilośc opdowiedzi");
+                    Console.WriteLine($"Niezgodna ilośc opdowiedzi w pliku: {questionFile}");
                     continue;
                 }
 
@@ -43,12 +43,14 @@ namespace TestownikConsoleApp
                         Answer = answerLine,
                         IsCorrect = result == "1"
                     };
+
                     question.Answers.Add(answer);
                 }
 
                 questions.Add(question);
 
             }
+
             return questions;
         }
     }
