@@ -16,10 +16,11 @@ namespace TestownikConsoleApp
             var countOfAnswers = randomQuestion.Answers.Count();
             Console.WriteLine(randomQuestion.Question);
             randomQuestion.Answers.Shuffle();
-            randomQuestion.Answers.ForEach(answer =>
+            var answers = randomQuestion.Answers.Select((answer, index) => new { indexOfAnswer = index + 1, answer.Answer });
+            foreach (var x in answers)
             {
-                Console.WriteLine($"{answer.Answer}");
-            });
+                Console.WriteLine($"{x.indexOfAnswer}) {x.Answer}");
+            }
         }
     }
 }
