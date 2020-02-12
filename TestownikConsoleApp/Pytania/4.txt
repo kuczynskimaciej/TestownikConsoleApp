@@ -1,5 +1,5 @@
-0011
-Ile to jest 2*9?
+1000
+Ile to jest 2*3?
 6
 1
 18

@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace TestownikConsoleApp
 {
-    public class QuestionDto // masz klase AnswerDto którą używasz, zrób tak aby QuestionDTO miało liste AnswerDTO i twoją główną klasą będzie QuestionDTO, CorrectAnswer wywal stąd bo możesz mieć wiele poprawnych odpowiedzi.
+    public class QuestionDto
     {
+        public List<AnswerDto> Answers { get; set; }
         public string Question { get; set; }
-        public string Answers { get; set; }
-        public int CorrectAnswer { get; set; }
     }
 }

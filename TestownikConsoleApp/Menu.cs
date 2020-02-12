@@ -6,51 +6,51 @@ namespace TestownikConsoleApp
 {
     class Menu
     {
-        public void menu()
+        public void PrintMenu()
         {
 
             Console.WriteLine("1 - Losuj");
             Console.WriteLine("2 - Dodaj Pytanie");
             Console.WriteLine("3 - Wyjdź");
-            int caseSwitch = Convert.ToInt32(Console.ReadLine());
-            GetPathClass getPath = new GetPathClass();
-            string path = getPath.getrandomfile("Pytania");
-
-            try
+            FileRandomizer getPath = new FileRandomizer();
+            string path = getPath.GetRandomFile("Pytania");
+            var selectedNumber = Console.ReadLine();
+            int number;
+            bool success = Int32.TryParse(selectedNumber, out number);
+            if (success)
             {
-                switch (caseSwitch)
+                switch (number)
                 {
                     case 1:
                         Console.Clear();
-                        WriteLinesClass readFile = new WriteLinesClass();
-                        readFile.WriteLines(path);
+                        FileReader readFile = new FileReader();
+                        readFile.ReadLines(path);
 
                         break;
 
                     case 2:
                         Console.Clear();
-                        AddNewQuestionClass writeFile = new AddNewQuestionClass();
-                        writeFile.AddNewQuestion(); // co to robi?
+                        WriteFile writeFile = new WriteFile();
+                        writeFile.AddNewFile();
 
                         break;
                     case 3:
                         Environment.Exit(0);
 
                         break;
+                    default:
+                        Console.Clear();
+                        PrintMenu();
+
+                        break;
                 }
-                if (caseSwitch == 0 || caseSwitch > 2)
-                {
-                    Console.Clear();
-                    menu();
-                }
-                else Environment.Exit(0);
             }
-            catch
+            else
             {
                 Console.Clear();
-                Console.WriteLine("~~~Wprowadź cyfrę!~~~\n");
-                menu();
+                PrintMenu();
             }
         }
     }
 }
+
